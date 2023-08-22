@@ -2,7 +2,7 @@ package com.senacsp.Webshop.entities.user;
 
 public enum UserRole {
     ADMIN("admin"),
-    USER("user");
+    CLIENTE("cliente");
 
     private String role;
 
