@@ -22,6 +22,7 @@ public class User implements Serializable {
     private String email;
     private String telefone;
     private String senha;
+    private UserRole role;
 
     public User(String nome, String email, String phone, String password) {
         this.nome = nome;
