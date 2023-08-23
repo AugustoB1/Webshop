@@ -31,4 +31,19 @@ public class UserService {
             user.setStatus(UserStatus.ATIVO);
         }
     }
+
+    public User atualizar(String id, User user){
+        try{
+            User entity = userRepository.getReferenceById(id);
+            atualizarData(entity, user);
+            return userRepository.save(entity);
+        }catch (EntityNotFoundException e){
+            throw new RecursoNaoEncontradoException(id);
+        }
+    }
+
+    public void atualizarData(User entity, User user){
+        entity.setNome(user.getNome());
+        entity.setTelefone(user.getTelefone());
+    }
 }

@@ -32,4 +32,10 @@ public class UserResource {
         user = service.atualizarStatus(id);
         return ResponseEntity.ok().body(user);
     }
+
+    @PutMapping(value = "/atualizar/{id}")
+    public ResponseEntity<User> atualizar(@PathVariable String id, @RequestBody User user){
+        user = service.atualizar(id, user);
+        return ResponseEntity.ok().body(user);
+    }
 }
