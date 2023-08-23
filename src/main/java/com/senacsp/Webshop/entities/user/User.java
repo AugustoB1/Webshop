@@ -1,5 +1,6 @@
 package com.senacsp.Webshop.entities.user;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -12,6 +13,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
+@JsonDeserialize(as = ConcreterUser.class)
 public abstract class User implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -22,13 +24,15 @@ public abstract class User implements Serializable {
     private String email;
     private String telefone;
     private String senha;
-    private UserRole role;
+    private UserFuncao funcao;
+    private UserStatus status;
 
-    public User(String nome, String email, String phone, String password) {
+    public User(String nome, String email, String phone, String password, UserStatus status) {
         this.nome = nome;
         this.email = email;
         this.telefone = phone;
         this.senha = password;
+        this.status = status;
     }
 
 }
