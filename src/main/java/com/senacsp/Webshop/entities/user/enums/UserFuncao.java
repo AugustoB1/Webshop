@@ -1,4 +1,4 @@
-package com.senacsp.Webshop.entities.user;
+package com.senacsp.Webshop.entities.user.enums;
 
 public enum UserFuncao {
     ADMIN("admin"),

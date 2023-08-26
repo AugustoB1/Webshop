@@ -1,9 +1,9 @@
 package com.senacsp.Webshop.config;
 
 import com.senacsp.Webshop.entities.user.Admin;
-import com.senacsp.Webshop.entities.user.Cliente;
+import com.senacsp.Webshop.entities.user.Estoquista;
 import com.senacsp.Webshop.entities.user.User;
-import com.senacsp.Webshop.entities.user.UserStatus;
+import com.senacsp.Webshop.entities.user.enums.UserStatus;
 import com.senacsp.Webshop.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -23,8 +23,8 @@ public class TestConfig implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         User u1 = new Admin("Augusto", "augusto@gmail.com", "teste", "teste", UserStatus.ATIVO);
-        User u2 = new Cliente("Brenno", "brenno@gmail.com", "teste", "teste", UserStatus.ATIVO);
-        User u3 = new Cliente("Deive", "deive@gmail.com", "teste", "teste", UserStatus.ATIVO);
+        User u2 = new Estoquista("Brenno", "brenno@gmail.com", "teste", "teste", UserStatus.ATIVO);
+        User u3 = new Estoquista("Deive", "deive@gmail.com", "teste", "teste", UserStatus.ATIVO);
 
         userRepository.saveAll(Arrays.asList(u1, u2, u3));
     }

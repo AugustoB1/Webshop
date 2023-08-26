@@ -2,7 +2,7 @@ package com.senacsp.Webshop.services;
 
 import com.senacsp.Webshop.entities.user.Admin;
 import com.senacsp.Webshop.entities.user.User;
-import com.senacsp.Webshop.entities.user.UserStatus;
+import com.senacsp.Webshop.entities.user.enums.UserStatus;
 import com.senacsp.Webshop.repositories.UserRepository;
 import com.senacsp.Webshop.services.exceptions.RecursoNaoEncontradoException;
 import jakarta.persistence.EntityNotFoundException;

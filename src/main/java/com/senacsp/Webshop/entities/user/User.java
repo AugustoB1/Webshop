@@ -1,7 +1,8 @@
 package com.senacsp.Webshop.entities.user;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.senacsp.Webshop.entities.user.enums.UserFuncao;
+import com.senacsp.Webshop.entities.user.enums.UserStatus;
 import jakarta.persistence.*;
 import lombok.*;
 

@@ -1,5 +1,7 @@
 package com.senacsp.Webshop.entities.user;
 
+import com.senacsp.Webshop.entities.user.enums.UserStatus;
+
 public class ConcreterUser extends User {
 
     public ConcreterUser() {

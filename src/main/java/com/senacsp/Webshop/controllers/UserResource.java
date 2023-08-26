@@ -2,7 +2,7 @@ package com.senacsp.Webshop.controllers;
 
 import com.senacsp.Webshop.entities.user.Admin;
 import com.senacsp.Webshop.entities.user.User;
-import com.senacsp.Webshop.entities.user.UserDTO;
+import com.senacsp.Webshop.entities.user.dto.UserDTO;
 import com.senacsp.Webshop.repositories.UserRepository;
 import com.senacsp.Webshop.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
