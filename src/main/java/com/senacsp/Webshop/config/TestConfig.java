@@ -7,6 +7,7 @@ import com.senacsp.Webshop.entities.user.enums.UserStatus;
 import com.senacsp.Webshop.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 

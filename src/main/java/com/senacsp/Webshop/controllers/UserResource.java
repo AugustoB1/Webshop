@@ -23,15 +23,13 @@ public class UserResource {
 
     @Autowired
     UserRepository repository;
-    @Autowired
-
-
     @GetMapping
     public ResponseEntity<List<UserDTO>> findAll() {
         List<UserDTO> users = this.repository.findAll().stream().map(UserDTO::new).toList();
 
         return ResponseEntity.ok().body(users);
     }
+
 
     @PutMapping(value = "/atualizarStatus/{id}")
     public ResponseEntity<User> atualizarStatus(@PathVariable String id, @RequestBody User user){
@@ -64,5 +62,11 @@ public class UserResource {
     public ResponseEntity<Void> delete(@PathVariable String id){
         service.delete(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping(value = "{nome}")
+    public ResponseEntity<List<User>> findByNome(@PathVariable String nome){
+        List<User> user = repository.findByNome(nome);
+        return ResponseEntity.ok().body(user);
     }
 }
