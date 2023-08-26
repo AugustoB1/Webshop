@@ -1,6 +1,7 @@
 package com.senacsp.Webshop.controllers;
 
 import com.senacsp.Webshop.entities.user.Admin;
+import com.senacsp.Webshop.entities.user.Estoquista;
 import com.senacsp.Webshop.entities.user.User;
 import com.senacsp.Webshop.entities.user.dto.UserDTO;
 import com.senacsp.Webshop.repositories.UserRepository;
@@ -43,14 +44,20 @@ public class UserResource {
         user = service.atualizar(id, user);
         return ResponseEntity.ok().body(user);
     }
-
-
     @PostMapping(value = "/cadastrar/admin")
-    public ResponseEntity<User> cadastrar(@RequestBody User user){
+    public ResponseEntity<User> cadastrarAdmin(@RequestBody User user){
         Admin admin = service.cadastrarAdmin(user);
         URI uri = ServletUriComponentsBuilder.
                 fromCurrentRequest().path("/{id}")
                 .buildAndExpand(admin.getId()).toUri();
         return ResponseEntity.created(uri).body(admin);
+    }
+    @PostMapping(value = "/cadastrar/estoquista")
+    public ResponseEntity<User> cadastrarEstoquista(@RequestBody User user){
+        Estoquista estoquista = service.cadastrarEstoquista(user);
+        URI uri = ServletUriComponentsBuilder.
+                fromCurrentRequest().path("/{id}")
+                .buildAndExpand(estoquista.getId()).toUri();
+        return ResponseEntity.created(uri).body(estoquista);
     }
 }
