@@ -13,5 +13,13 @@ public enum UserFuncao {
     public String getFuncao(){
         return funcao;
     }
+    public static UserStatus valueOfFuncao(String funcao) {
+        for (UserStatus userStatus : UserStatus.values()) {
+            if (userStatus.getStatus().equals(funcao)) {
+                return userStatus;
+            }
+        }
+        throw new IllegalArgumentException("Invalid status: " + funcao);
+    }
 }
 

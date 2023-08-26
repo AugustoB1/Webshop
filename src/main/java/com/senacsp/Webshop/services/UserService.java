@@ -1,5 +1,6 @@
 package com.senacsp.Webshop.services;
 
+import com.senacsp.Webshop.entities.user.Admin;
 import com.senacsp.Webshop.entities.user.User;
 import com.senacsp.Webshop.entities.user.UserStatus;
 import com.senacsp.Webshop.repositories.UserRepository;
@@ -46,4 +47,12 @@ public class UserService {
         entity.setNome(user.getNome());
         entity.setTelefone(user.getTelefone());
     }
+
+    public Admin cadastrarAdmin(User user){
+        Admin admin = new Admin(user.getNome(), user.getTelefone(), user.getEmail(), user.getSenha(), user.getStatus());
+        return userRepository.save(admin);
+    }
+
+
+
 }

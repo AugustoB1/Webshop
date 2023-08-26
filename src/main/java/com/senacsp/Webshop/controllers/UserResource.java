@@ -1,5 +1,6 @@
 package com.senacsp.Webshop.controllers;
 
+import com.senacsp.Webshop.entities.user.Admin;
 import com.senacsp.Webshop.entities.user.User;
 import com.senacsp.Webshop.entities.user.UserDTO;
 import com.senacsp.Webshop.repositories.UserRepository;
@@ -7,7 +8,9 @@ import com.senacsp.Webshop.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -19,6 +22,8 @@ public class UserResource {
 
     @Autowired
     UserRepository repository;
+    @Autowired
+
 
     @GetMapping
     public ResponseEntity<List<UserDTO>> findAll() {
@@ -37,5 +42,15 @@ public class UserResource {
     public ResponseEntity<User> atualizar(@PathVariable String id, @RequestBody User user){
         user = service.atualizar(id, user);
         return ResponseEntity.ok().body(user);
+    }
+
+
+    @PostMapping(value = "/cadastrar/admin")
+    public ResponseEntity<User> cadastrar(@RequestBody User user){
+        Admin admin = service.cadastrarAdmin(user);
+        URI uri = ServletUriComponentsBuilder.
+                fromCurrentRequest().path("/{id}")
+                .buildAndExpand(admin.getId()).toUri();
+        return ResponseEntity.created(uri).body(admin);
     }
 }
