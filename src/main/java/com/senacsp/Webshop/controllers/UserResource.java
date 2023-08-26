@@ -60,4 +60,9 @@ public class UserResource {
                 .buildAndExpand(estoquista.getId()).toUri();
         return ResponseEntity.created(uri).body(estoquista);
     }
+    @DeleteMapping(value = "{id}")
+    public ResponseEntity<Void> delete(@PathVariable String id){
+        service.delete(id);
+        return ResponseEntity.noContent().build();
+    }
 }

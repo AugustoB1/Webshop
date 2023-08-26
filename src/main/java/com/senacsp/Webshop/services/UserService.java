@@ -5,10 +5,15 @@ import com.senacsp.Webshop.entities.user.Estoquista;
 import com.senacsp.Webshop.entities.user.User;
 import com.senacsp.Webshop.entities.user.enums.UserStatus;
 import com.senacsp.Webshop.repositories.UserRepository;
+import com.senacsp.Webshop.services.exceptions.DatabaseException;
 import com.senacsp.Webshop.services.exceptions.RecursoNaoEncontradoException;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -57,6 +62,19 @@ public class UserService {
     public Estoquista cadastrarEstoquista(User user){
         Estoquista estoquista = new Estoquista(user.getNome(), user.getTelefone(), user.getEmail(), user.getSenha(), user.getStatus());
         return userRepository.save(estoquista);
+    }
+
+    public void delete(String id){
+        try {
+            Optional<User> user = userRepository.findById(id);
+            if(user.isEmpty()){
+                throw new RecursoNaoEncontradoException(id);
+            }
+            userRepository.deleteById(id);
+        }
+        catch(DataIntegrityViolationException e) {
+            throw new DatabaseException(e.getMessage());
+        }
     }
 
 
