@@ -11,6 +11,6 @@ public class Estoquista extends User{
 
     public Estoquista(String nome, String email, String telefone, String senha, UserStatus status) {
         super(nome, email, telefone, senha, status);
-        setFuncao(UserFuncao.CLIENTE);
+        setFuncao(UserFuncao.ESTOQUISTA);
     }
 }

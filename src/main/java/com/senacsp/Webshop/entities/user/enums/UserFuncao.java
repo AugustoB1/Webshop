@@ -2,7 +2,7 @@ package com.senacsp.Webshop.entities.user.enums;
 
 public enum UserFuncao {
     ADMIN("admin"),
-    CLIENTE("cliente");
+    ESTOQUISTA("estoquista");
 
     private String funcao;
 
