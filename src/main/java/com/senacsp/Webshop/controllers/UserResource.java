@@ -7,7 +7,11 @@ import com.senacsp.Webshop.entities.user.dto.UserDTO;
 import com.senacsp.Webshop.repositories.UserRepository;
 import com.senacsp.Webshop.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -17,7 +21,6 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/users")
 public class UserResource {
-
     @Autowired
     UserService service;
 
@@ -68,5 +71,14 @@ public class UserResource {
     public ResponseEntity<List<User>> findByNome(@PathVariable String nome){
         List<User> user = repository.findByNome(nome);
         return ResponseEntity.ok().body(user);
+    }
+
+    @PostMapping("/Login")
+    public ResponseEntity<User> validarSenha(@RequestBody User user){
+        boolean valid = service.validarSenha(user);
+        if(!valid){
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        return ResponseEntity.status(200).build();
     }
 }

@@ -11,6 +11,8 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -18,6 +20,7 @@ import java.util.Optional;
 @Service
 public class UserService {
 
+    private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
     @Autowired
     private UserRepository userRepository;
 
@@ -41,6 +44,8 @@ public class UserService {
 
     public User atualizar(String id, User user){
         try{
+            String criptografando = this.passwordEncoder.encode(user.getSenha());
+            user.setSenha(criptografando);
             User entity = userRepository.getReferenceById(id);
             atualizarData(entity, user);
             return userRepository.save(entity);
@@ -55,11 +60,15 @@ public class UserService {
     }
 
     public Admin cadastrarAdmin(User user){
+        String criptografando = this.passwordEncoder.encode(user.getSenha());
+        user.setSenha(criptografando);
         Admin admin = new Admin(user.getNome(), user.getTelefone(), user.getEmail(), user.getSenha(), user.getStatus());
         return userRepository.save(admin);
     }
 
     public Estoquista cadastrarEstoquista(User user){
+        String criptografando = this.passwordEncoder.encode(user.getSenha());
+        user.setSenha(criptografando);
         Estoquista estoquista = new Estoquista(user.getNome(), user.getTelefone(), user.getEmail(), user.getSenha(), user.getStatus());
         return userRepository.save(estoquista);
     }
@@ -78,5 +87,9 @@ public class UserService {
     }
 
 
-
+    public boolean validarSenha(User user) {
+        String senha = userRepository.getById(user.getId()).getSenha();
+        boolean valid = passwordEncoder.matches(user.getSenha(), senha);
+        return valid;
+    }
 }
