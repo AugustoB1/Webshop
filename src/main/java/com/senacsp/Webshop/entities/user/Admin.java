@@ -9,8 +9,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Admin extends User{
 
-    public Admin(String nome, String email, String telefone, String senha, UserStatus status) {
-        super(nome, email, telefone, senha, status);
+    public Admin(String nome, String email, String telefone, String senha) {
+        super(nome, email, telefone, senha);
         setFuncao(UserFuncao.ADMIN);
+        setStatus(UserStatus.ATIVO);
     }
 }

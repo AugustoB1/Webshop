@@ -62,14 +62,14 @@ public class UserService {
     public Admin cadastrarAdmin(User user){
         String criptografando = this.passwordEncoder.encode(user.getSenha());
         user.setSenha(criptografando);
-        Admin admin = new Admin(user.getNome(), user.getTelefone(), user.getEmail(), user.getSenha(), user.getStatus());
+        Admin admin = new Admin(user.getNome(), user.getTelefone(), user.getEmail(), user.getSenha());
         return userRepository.save(admin);
     }
 
     public Estoquista cadastrarEstoquista(User user){
         String criptografando = this.passwordEncoder.encode(user.getSenha());
         user.setSenha(criptografando);
-        Estoquista estoquista = new Estoquista(user.getNome(), user.getTelefone(), user.getEmail(), user.getSenha(), user.getStatus());
+        Estoquista estoquista = new Estoquista(user.getNome(), user.getTelefone(), user.getEmail(), user.getSenha());
         return userRepository.save(estoquista);
     }
 
@@ -85,7 +85,6 @@ public class UserService {
             throw new DatabaseException(e.getMessage());
         }
     }
-
 
     public boolean validarSenha(User user) {
         String senha = userRepository.getById(user.getId()).getSenha();

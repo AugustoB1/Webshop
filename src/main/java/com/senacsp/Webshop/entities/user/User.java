@@ -29,12 +29,11 @@ public abstract class User implements Serializable {
     private UserFuncao funcao;
     private UserStatus status;
 
-    public User(String nome, String email, String phone, String password, UserStatus status) {
+    public User(String nome, String email, String telefone, String senha) {
         this.nome = nome;
         this.email = email;
-        this.telefone = phone;
-        this.senha = password;
-        this.status = status;
+        this.telefone = telefone;
+        this.senha = senha;
     }
 
 }

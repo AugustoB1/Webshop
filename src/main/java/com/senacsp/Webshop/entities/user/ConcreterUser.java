@@ -7,7 +7,7 @@ public class ConcreterUser extends User {
     public ConcreterUser() {
         super();
     }
-    public ConcreterUser(String nome, String email, String phone, String password, UserStatus status) {
-        super(nome, email, phone, password, status);
+    public ConcreterUser(String nome, String email, String phone, String password) {
+        super(nome, email, phone, password);
     }
 }
