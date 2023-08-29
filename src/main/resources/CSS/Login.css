@@ -5,7 +5,7 @@ body, html {
   }
   
   .background {
-    background-image: url(capa-1.jpg);
+    background-image: url(../img/capa-1.jpg);
     background-size: cover;
     background-position: center;
     height: 100%;
