@@ -4,72 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Usuários</title>
-    <!-- Inclua as referências ao Bootstrap aqui -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="../CSS/ListaDeUsuarios.css">
-    <!-- Inclua o estilo do interruptor aqui -->
-    <style>
-        .switch {
-          position: relative;
-          display: inline-block;
-          width: 60px;
-          height: 34px;
-        }
-
-        .switch input {
-          opacity: 0;
-          width: 0;
-          height: 0;
-        }
-
-        .slider {
-          position: absolute;
-          cursor: pointer;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background-color: #ccc;
-          -webkit-transition: .4s;
-          transition: .4s;
-        }
-
-        .slider:before {
-          position: absolute;
-          content: "";
-          height: 26px;
-          width: 26px;
-          left: 4px;
-          bottom: 4px;
-          background-color: white;
-          -webkit-transition: .4s;
-          transition: .4s;
-        }
-
-        input:checked + .slider {
-          background-color: #2196F3;
-        }
-
-        input:focus + .slider {
-          box-shadow: 0 0 1px #2196F3;
-        }
-
-        input:checked + .slider:before {
-          -webkit-transform: translateX(26px);
-          -ms-transform: translateX(26px);
-          transform: translateX(26px);
-        }
-
-        /* Rounded sliders */
-        .slider.round {
-          border-radius: 34px;
-        }
-
-        .slider.round:before {
-          border-radius: 50%;
-        }
-    </style>
 </head>
 <body>
 <div class="container">
@@ -97,12 +34,11 @@
             </thead>
             <tbody id="userList">
             <!-- Aqui será preenchido com JavaScript -->
-            <!-- Aqui será preenchido com JavaScript -->
+
             </tbody>
         </table>
     </div>
 </div>
-<!-- Inclua as referências aos scripts do Bootstrap e do JavaScript aqui -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="../JavaScript/ListaDeUsuarios.js"></script>
