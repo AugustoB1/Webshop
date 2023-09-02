@@ -44,9 +44,9 @@ public class UserService {
 
     public User atualizar(String id, User user){
         try{
-            String criptografando = this.passwordEncoder.encode(user.getSenha());
-            user.setSenha(criptografando);
             User entity = userRepository.getReferenceById(id);
+            String criptografando = this.passwordEncoder.encode(entity.getSenha());
+            entity.setSenha(criptografando);
             atualizarData(entity, user);
             return userRepository.save(entity);
         }catch (EntityNotFoundException e){
@@ -57,19 +57,20 @@ public class UserService {
     public void atualizarData(User entity, User user){
         entity.setNome(user.getNome());
         entity.setTelefone(user.getTelefone());
+        entity.setSenha(entity.getSenha());
     }
 
     public Admin cadastrarAdmin(User user){
         String criptografando = this.passwordEncoder.encode(user.getSenha());
         user.setSenha(criptografando);
-        Admin admin = new Admin(user.getNome(), user.getTelefone(), user.getEmail(), user.getSenha());
+        Admin admin = new Admin(user.getNome(), user.getEmail(),user.getCpf(), user.getTelefone(), user.getSenha());
         return userRepository.save(admin);
     }
 
     public Estoquista cadastrarEstoquista(User user){
         String criptografando = this.passwordEncoder.encode(user.getSenha());
         user.setSenha(criptografando);
-        Estoquista estoquista = new Estoquista(user.getNome(), user.getTelefone(), user.getEmail(), user.getSenha());
+        Estoquista estoquista = new Estoquista(user.getNome(), user.getEmail(), user.getCpf(), user.getTelefone(), user.getSenha());
         return userRepository.save(estoquista);
     }
 

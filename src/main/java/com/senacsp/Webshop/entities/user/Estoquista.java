@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Estoquista extends User{
 
-    public Estoquista(String nome, String email, String telefone, String senha) {
-        super(nome, email, telefone, senha);
+    public Estoquista(String nome, String email, String cpf, String telefone, String senha) {
+        super(nome, email, cpf, telefone, senha);
         setFuncao(UserFuncao.ESTOQUISTA);
         setStatus(UserStatus.ATIVO);
     }
